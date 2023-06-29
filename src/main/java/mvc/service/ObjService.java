@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
@@ -14,12 +15,15 @@ import java.util.List;
 
 @Service
 public class ObjService {
-    @Autowired
-    ObjRepository objRepository;
+    private JdbcTemplate jdbcTemplate;
 
-    public List<Obj> findObjByListName(List<String> objName) {
-        List<Obj> objList = objRepository.findObjByListName(objName);
-        return objList;
+    public ObjService(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
+
+    public List<Obj> findAllList(){
+        String sql = "select * from obj";
+        return jdbcTemplate.query("sql", new BeanPropertyRowMapper<>(Obj.class));
     }
 }
 
