@@ -3,6 +3,7 @@ package org.example;
 import mvc.configuration.Config;
 import mvc.entity.Obj;
 import mvc.repository.ObjRepository;
+import mvc.service.ObjService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -16,13 +17,13 @@ public class Main {
     static ApplicationContext context = new AnnotationConfigApplicationContext(Config.class);
     static ObjRepository objRepository = (ObjRepository) context.getBean("objRepository");
     @Autowired
-    static ObjRepository objRepository1;
+    static ObjService objService;
 
     public static void main(String[] args) {
         Main action = new Main();
 //        action.createTestData();
 //        action.findObjByName("3");
-        action.printObjectList(objRepository1.findObjByListName(action.listNameTest()));
+        action.printObjectList(objService.findObjByListName(action.listNameTest()));
 
 
 
