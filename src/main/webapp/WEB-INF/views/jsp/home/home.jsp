@@ -19,9 +19,6 @@
             <%@include file="/resources/css/home.css" %>
           </style>
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-          <script>
-             <%@include file="/resources/script/home.js" %>
-          </script>
         </head>
 
         <body>
@@ -32,9 +29,9 @@
             <form:form action="${action}" method="get">
               <div class="d-flex search-box">
                 <div class="input-group w-auto">
-                  <input name="searchInput" type="text" class="form-control" placeholder="Search..."
+                  <input id="searchInput" name="searchInput" type="text" class="form-control" placeholder="Search..."
                     aria-label="Search input" />
-                  <button class="btn btn-primary" type="submit" data-mdb-ripple-color="dark">Search
+                  <button class="btn btn-primary" type="button" data-mdb-ripple-color="dark" id="searchButton">Search
                   </button>
                 </div>
               </div>
@@ -45,7 +42,7 @@
             <form:form action="${action}" method="post">
             <div class="d-flex justify-content-center"><button class="btn-mines" type="submit">Submit</button></div>
             </br>
-              <table class="table">
+              <table class="table" id="objTable">
                 <thead class="thead-dark">
                   <tr>
                     <th scope="col">Object Id</th>
@@ -60,7 +57,6 @@
                   </c:if>
 
                   <c:if test="${not empty objList}">
-                    <input type="hidden" name="objId" value="${product.productId}" />
                     <c:forEach var="obj" items="${objList}" varStatus="e">
                       <tr>
                         <td>${obj.objId}</td>
@@ -88,6 +84,10 @@
                   class="pagination-item__icon fas fa-angle-right"></i>
               </a></li>
           </ul>
+
+          <script>
+             <%@include file="/resources/script/home.js" %>
+          </script>
         </body>
 
         </html>

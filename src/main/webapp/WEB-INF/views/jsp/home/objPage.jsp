@@ -34,9 +34,10 @@
 <form:form method="post" id="objForm" action="${action}">
 <div class="input-group">
 <label class="label">Object name</label>
-<input id="objName" name="objName" class="form-control" type="text" placeholder="Object Name" value="This is obj name"/>
+<input id="objName" name="objName" class="form-control" type="text" placeholder="Object Name" value=""/>
 </div>
-<button class="btn btn-success" type="button" id="buttonSubmit">Submit</button>
+</br>
+<button class="btn btn-success" type="button" id="buttonSubmit">Click to show</button>
 </form:form>
 
 <div class="container">

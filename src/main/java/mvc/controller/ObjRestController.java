@@ -16,4 +16,10 @@ public class ObjRestController {
         }
         return responseData;
     }
+
+    @PostMapping(value = "${pageContext.request.contextPath}/input-obj-name")
+    public String inputObjName(String objName){
+        String responseData = objName;
+        return responseData;
+    }
 }

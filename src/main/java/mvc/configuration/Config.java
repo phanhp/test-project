@@ -1,6 +1,7 @@
 package mvc.configuration;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -17,6 +18,7 @@ import java.util.Properties;
 @org.springframework.context.annotation.Configuration
 @EnableJpaRepositories(basePackages = "mvc")
 @EnableTransactionManagement
+@ComponentScan(basePackages = "mvc")
 public class Config {
     @Bean
     DataSource dataSource() {
@@ -49,10 +51,6 @@ public class Config {
         return jpaTransactionManager;
     }
 
-    @Bean
-    JdbcTemplate jdbcTemplate(){
-        return new JdbcTemplate(dataSource());
-    }
 
 //    @Bean(name = "viewResolver")
 //    public InternalResourceViewResolver getViewResolver() {
